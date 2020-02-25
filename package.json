@@ -2,9 +2,12 @@
   "name": "poi-ui-react",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index",
   "scripts": {
     "start": "cross-env PORT=8086 react-scripts start",
     "build": "react-scripts build",
+    "build-dist": "webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -16,12 +19,12 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "cross-env": "^5.2.0",
+    "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.4.0",
-    "typescript": "~3.7.2",
-    "cross-env": "^5.2.0",
-    "node-sass": "^4.13.0"
+    "typescript": "~3.7.2"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "webpack-cli": "^3.3.11"
   }
 }
