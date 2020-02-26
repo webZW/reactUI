@@ -245,7 +245,7 @@ class Button extends React.Component<ButtonProps, ButtonState> {
 						[`${prefixCls}-rtl`]: direction === 'rtl',
 					} as Record<string, any>));
 
-					// const iconNode = loading ? <LoadingOutlined /> : icon || null;
+					const iconNode = loading ? <i className="iconfont poi-loading" /> : icon ? <i className={ `iconfont poi-${icon}` } /> : null;
 					const kids =
 						children || children === 0
 							? spaceChildren(children, this.isNeedInserted() && autoInsertSpace)
@@ -260,7 +260,7 @@ class Button extends React.Component<ButtonProps, ButtonState> {
 								onClick={this.handleClick}
 								ref={this.saveButtonRef}
 							>
-								{/* {iconNode} */}
+								{iconNode}
 								{kids}
 							</a>
 						);
@@ -277,7 +277,7 @@ class Button extends React.Component<ButtonProps, ButtonState> {
 							onClick={this.handleClick}
 							ref={this.saveButtonRef}
 						>
-							{/* {iconNode} */}
+							{iconNode}
 							{kids}
 						</button>
 					);

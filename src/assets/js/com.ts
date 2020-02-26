@@ -32,7 +32,7 @@ export const classNames = (...classes: (string | any[] | undefined | Record<stri
    return str;
 }
 const classesMap = ({ classes, index, str }: Record<string, any>): any => {
-   console.log('classesMap: ', 'str: ', str, 'classes: ', classes[index]);
+   // console.log('classesMap: ', 'str: ', str, 'classes: ', classes[index]);
    str = dealConfig[StringMap[toStringFun.call(classes[index])]](str, classes[index])
    if (classes.length - 1 === index) return str
    else return classesMap({ classes, index: index + 1, str })
@@ -45,7 +45,7 @@ const classObj = (preStr: string, newStr: Record<string, any>) => {
    for ( let key in newStr ) {
       newStr[key] && ( str = `${str} ${key}` );
    }
-   console.log('classObj: ', str);
+   // console.log('classObj: ', str);
    return str;
 }
 

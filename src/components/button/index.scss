@@ -1,4 +1,5 @@
-$prefix: poiUI;
+@import '../../assets/style/default.scss';
+
 $btn-prefix-cls: #{$prefix}-btn;
 
 .#{$btn-prefix-cls} {
@@ -30,6 +31,13 @@ $btn-prefix-cls: #{$prefix}-btn;
    }
 
    &:hover,
+   &:focus {
+      color: #40a9ff;
+      background-color: #fff;
+      border-color: #40a9ff; 
+   }
+
+   &:hover,
    &:focus,
    &:active,
    &.active  {
@@ -37,7 +45,7 @@ $btn-prefix-cls: #{$prefix}-btn;
       background: #fff;
    }
 
-   &.#{$btn-prefix-cls}-primary {
+   &-primary {
       color: #fff;
       background-color: #1890ff;
       border-color: #1890ff;
@@ -53,7 +61,7 @@ $btn-prefix-cls: #{$prefix}-btn;
    }
 
 
-   &.#{$btn-prefix-cls}-link {
+   &-link {
 
       color: #1890ff;
       background-color: transparent;
@@ -72,7 +80,52 @@ $btn-prefix-cls: #{$prefix}-btn;
       &:active{
          border-color: transparent;
       }
-
    }
 
+   &-dashed {
+      color: rgba(0, 0, 0, 0.65);
+      background-color: #fff;
+      border-color: #d9d9d9;
+      border-style: dashed;
+
+      &:hover, 
+      &:focus {
+         color: #40a9ff;
+         background-color: #fff;
+         border-color: #40a9ff;
+     }
+   }
+
+   &-danger {
+      color: #fff;
+      background-color: #ff4d4f;
+      border-color: #ff4d4f;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+      -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+      &:hover, 
+      &:focus {
+         color: #fff;
+         background-color: #ff7875;
+         border-color: #ff7875;
+     }
+   }
+
+   &-icon-only {
+       width: 32px;
+       height: 32px;
+       padding: 0;
+       font-size: 16px;
+       border-radius: 4px;
+    }
+
+   &-circle,
+   &-circle-outline {
+      min-width: 32px;
+      padding-right: 0;
+      padding-left: 0;
+      text-align: center;
+      border-radius: 50%;
+  }
 }
