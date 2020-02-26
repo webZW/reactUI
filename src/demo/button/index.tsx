@@ -36,9 +36,24 @@ const Button = () => {
          <div className="pb15">
             <p>按钮尺寸</p>
             <div>
-               <ComButton className="mr15" type="primary" onClick={ () => setSize('large') }>large</ComButton>
+               
+               <ComButton.Group size={size}>
+                  <ComButton type="primary"  onClick={ () => setSize('large') }>
+                     {/* <Icon type="left" /> */}
+                     large
+                  </ComButton>
+                  <ComButton type="primary" onClick={ () => setSize('default') }>
+                     default
+                     {/* <Icon type="right" /> */}
+                  </ComButton>
+                  <ComButton type="primary" onClick={ () => setSize('small') }>
+                     small
+                     {/* <Icon type="right" /> */}
+                  </ComButton>
+               </ComButton.Group>
+               {/* <ComButton className="mr15" type="primary" onClick={ () => setSize('large') }>large</ComButton>
                <ComButton className="mr15" type="primary" onClick={ () => setSize('default') }>default</ComButton>
-               <ComButton className="mr15" type="primary" onClick={ () => setSize('small') }>small</ComButton>
+               <ComButton className="mr15" type="primary" onClick={ () => setSize('small') }>small</ComButton> */}
             </div>
             <br />
             {/* <Radio.Group value={size} onChange={this.handleSizeChange}>

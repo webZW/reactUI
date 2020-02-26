@@ -2,6 +2,7 @@ import * as React from "react";
 import { Omit, tuple } from '../_util/type';
 import SizeContext, { SizeType } from '../../assets/js/SizeContext';
 import { omit, classNames, getPrefixCls } from "../../assets/js/com";
+import Group from './button-group';
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
@@ -98,7 +99,7 @@ interface ButtonState {
 }
 
 class Button extends React.Component<ButtonProps, ButtonState> {
-	// static Group: typeof Group;
+	static Group: typeof Group;
 
 	static __ANT_BUTTON = true;
  

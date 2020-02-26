@@ -154,5 +154,40 @@ $btn-prefix-cls: #{$prefix}-btn;
       padding-left: 0;
       text-align: center;
       border-radius: 50%;
-  }
+   }
+
+   &-group {
+      position: relative;
+      display: inline-block;
+
+      .#{$btn-prefix-cls} {
+         border-radius: 0;
+      }
+
+      .#{$btn-prefix-cls} + .#{$btn-prefix-cls},
+      span + .#{$btn-prefix-cls},
+      .#{$btn-prefix-cls} + span,
+      > span + span,
+      + .#{$btn-prefix-cls},
+      + .#{$btn-prefix-cls}-group {
+         margin-left: -1px;
+      }
+
+      .#{$btn-prefix-cls}-primary:last-child:not(:first-child),
+      .#{$btn-prefix-cls}-primary + .#{$btn-prefix-cls}-primary {
+         border-left-color: #40a9ff;
+      }
+
+      > .#{$btn-prefix-cls}:first-child:not(:last-child),
+      > span:first-child:not(:last-child) > .#{$btn-prefix-cls} {
+         border-top-left-radius: 4px;
+         border-bottom-left-radius: 4px;
+     }
+
+      > .#{$btn-prefix-cls}:last-child:not(:first-child),
+      > span:last-child:not(:first-child) > .#{$btn-prefix-cls} {
+         border-top-right-radius: 4px;
+         border-bottom-right-radius: 4px;
+      }
+   }
 }
