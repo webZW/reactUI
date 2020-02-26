@@ -44,6 +44,33 @@ $btn-prefix-cls: #{$prefix}-btn;
       text-decoration: none;
       background: #fff;
    }
+   
+   > i, 
+   > span {
+      display: inline-block;
+      -webkit-transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      pointer-events: none;
+  }
+
+   > i + span,
+   > span + i {
+      margin-left: 8px;
+   }
+
+   &-lg {
+      height: 40px;
+      padding: 0 15px;
+      font-size: 16px;
+      border-radius: 4px;
+  }
+
+   &-sm {
+      height: 24px;
+      padding: 0 7px;
+      font-size: 14px;
+      border-radius: 4px;
+   }
 
    &-primary {
       color: #fff;
