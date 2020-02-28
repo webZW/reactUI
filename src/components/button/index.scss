@@ -178,6 +178,17 @@ $btn-prefix-cls: #{$prefix}-btn;
          border-left-color: #40a9ff;
       }
 
+      > .#{$btn-prefix-cls}:hover,
+      > span > .#{$btn-prefix-cls}:hover,
+      > .#{$btn-prefix-cls}:focus,
+      > span > .#{$btn-prefix-cls}:focus,
+      > .#{$btn-prefix-cls}:active,
+      > span > .#{$btn-prefix-cls}:active,
+      > .#{$btn-prefix-cls}.active,
+      > span > .#{$btn-prefix-cls}.active {
+         z-index: 2;
+      }
+
       > .#{$btn-prefix-cls}:first-child:not(:last-child),
       > span:first-child:not(:last-child) > .#{$btn-prefix-cls} {
          border-top-left-radius: 4px;

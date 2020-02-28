@@ -26,7 +26,8 @@
  
 
 import Button from './button'
+import Icon from './icon'
 export {
-  Button
+  Button, Icon
 }
 export default { Button }

@@ -7,14 +7,15 @@ import './main.scss'
 const { Button } = Comp;
 
 const DemoCompConfig: Record<string, React.ReactNode> = {
-   'Button': <DemoComp.Button />
+   'Button': <DemoComp.Button />,
+   'Icon': <DemoComp.Icon />
 }
 
 const Demo = () => {
    const [ selectCom, setSelectCom ] = React.useState('Button');
  
    return (
-     <div className="React-Demo">
+     <div className="ml15">
        {
          Object.keys(Comp).map((key: string) => (
            <React.Fragment key={`Comp-${key}`}>

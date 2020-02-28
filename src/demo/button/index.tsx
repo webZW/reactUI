@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { Button as ComButton } from '../../components/index'
+import { Button as ComButton, Icon } from '../../components/index'
 
 const Button = () => {
    const [ size, setSize ] = React.useState(('large' as "large" | "small" | "default" | "middle" | undefined));
@@ -39,16 +39,15 @@ const Button = () => {
                
                <ComButton.Group size={size}>
                   <ComButton type="primary"  onClick={ () => setSize('large') }>
-                     {/* <Icon type="left" /> */}
+                     <Icon type="left" />
                      large
                   </ComButton>
                   <ComButton type="primary" onClick={ () => setSize('default') }>
                      default
-                     {/* <Icon type="right" /> */}
                   </ComButton>
                   <ComButton type="primary" onClick={ () => setSize('small') }>
                      small
-                     {/* <Icon type="right" /> */}
+                     <Icon type="right" />
                   </ComButton>
                </ComButton.Group>
             </div>
@@ -88,12 +87,12 @@ const Button = () => {
             <h4>With Icon</h4>
             <ComButton.Group className="mr15">
                <ComButton type="primary">
-               {/* <Icon type="left" /> */}
+               <Icon type="left" />
                Go back
                </ComButton>
                <ComButton type="primary" className="mr15">
                Go forward
-               {/* <Icon type="right" /> */}
+               <Icon type="right" />
                </ComButton>
             </ComButton.Group>
             <ComButton.Group className="mr15">
