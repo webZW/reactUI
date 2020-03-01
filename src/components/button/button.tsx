@@ -3,6 +3,7 @@ import { Omit, tuple } from '../_util/type';
 import SizeContext, { SizeType } from '../../assets/js/SizeContext';
 import { omit, classNames, getPrefixCls } from "../../assets/js/com";
 import Group from './button-group';
+import Icon from "../icon";
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
@@ -67,7 +68,7 @@ export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
 
 export interface BaseButtonProps {
 	type?: ButtonType;
-	icon?: React.ReactNode;
+	icon?: string;
 	shape?: ButtonShape;
 	size?: SizeType;
 	loading?: boolean | { delay?: number };
@@ -246,7 +247,7 @@ class Button extends React.Component<ButtonProps, ButtonState> {
 						[`${prefixCls}-rtl`]: direction === 'rtl',
 					} as Record<string, any>));
 
-					const iconNode = loading ? <i className="iconfont poi-loading" /> : icon ? <i className={ `iconfont poi-${icon}` } /> : null;
+					const iconNode = loading ? <Icon type={ 'loading' }/> : icon ? <Icon type={ icon }/> : null;
 					const kids =
 						children || children === 0
 							? spaceChildren(children, this.isNeedInserted() && autoInsertSpace)

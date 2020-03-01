@@ -2,6 +2,49 @@
 
 $btn-prefix-cls: #{$prefix}-btn;
 
+@mixin disableShow {
+   &-disabled,
+   &.disabled,
+   &[disabled],
+   &-disabled:hover,
+   &.disabled:hover,
+   &[disabled]:hover,
+   &-disabled:focus,
+   &.disabled:focus,
+   &[disabled]:focus,
+   &-disabled:active,
+   &.disabled:active,
+   &[disabled]:active,
+   &-disabled.active,
+   &.disabled.active,
+   &[disabled].active {
+      color: rgba(0, 0, 0, 0.25);
+      background-color: #f5f5f5;
+      border-color: #d9d9d9;
+      text-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+   }
+}
+     
+@mixin disabled { 
+   .#{$btn-prefix-cls}.disabled,
+   .#{$btn-prefix-cls}[disabled] {
+      cursor: not-allowed;
+   }
+}
+
+@include disabled;
+
+@mixin hover_focus($bgc: #fff) {
+   &:hover,
+   &:focus {
+      color: #40a9ff;
+      background-color: $bgc;
+      border-color: #40a9ff; 
+   }
+}
+
 .#{$btn-prefix-cls} {
 
    line-height: 1.499;
@@ -30,12 +73,7 @@ $btn-prefix-cls: #{$prefix}-btn;
       outline: 0;
    }
 
-   &:hover,
-   &:focus {
-      color: #40a9ff;
-      background-color: #fff;
-      border-color: #40a9ff; 
-   }
+   @include hover_focus;
 
    &:hover,
    &:focus,
@@ -57,6 +95,8 @@ $btn-prefix-cls: #{$prefix}-btn;
    > span + i {
       margin-left: 8px;
    }
+
+   @include disableShow;
 
    &-lg {
       height: 40px;
@@ -85,22 +125,19 @@ $btn-prefix-cls: #{$prefix}-btn;
          background-color: #40a9ff;
          border-color: #40a9ff;     
       }
+
+      @include disableShow;
+     
    }
 
-
    &-link {
-
       color: #1890ff;
       background-color: transparent;
       border-color: transparent;
       box-shadow: none;
 
-      &:hover,
-      &:focus {
-         color: #40a9ff;
-         background-color: transparent;
-         border-color: #40a9ff;
-      }
+
+      @include hover_focus(transparent);
 
       &:hover,
       &:focus,
@@ -115,12 +152,7 @@ $btn-prefix-cls: #{$prefix}-btn;
       border-color: #d9d9d9;
       border-style: dashed;
 
-      &:hover, 
-      &:focus {
-         color: #40a9ff;
-         background-color: #fff;
-         border-color: #40a9ff;
-     }
+      @include hover_focus;
    }
 
    &-danger {
@@ -145,7 +177,7 @@ $btn-prefix-cls: #{$prefix}-btn;
        padding: 0;
        font-size: 16px;
        border-radius: 4px;
-    }
+   }
 
    &-circle,
    &-circle-outline {
@@ -154,6 +186,12 @@ $btn-prefix-cls: #{$prefix}-btn;
       padding-left: 0;
       text-align: center;
       border-radius: 50%;
+   }
+
+   &-background-ghost {
+      color: #fff;
+      background: transparent !important;
+      border-color: #fff;
    }
 
    &-group {
@@ -201,36 +239,90 @@ $btn-prefix-cls: #{$prefix}-btn;
          border-bottom-right-radius: 4px;
       }
 
-      .#{$btn-prefix-cls}-disabled,
-      .#{$btn-prefix-cls}.disabled,
-      .#{$btn-prefix-cls}[disabled],
-      .#{$btn-prefix-cls}-disabled:hover,
-      .#{$btn-prefix-cls}.disabled:hover,
-      .#{$btn-prefix-cls}[disabled]:hover,
-      .#{$btn-prefix-cls}-disabled:focus,
-      .#{$btn-prefix-cls}.disabled:focus,
-      .#{$btn-prefix-cls}[disabled]:focus,
-      .#{$btn-prefix-cls}-disabled:active,
-      .#{$btn-prefix-cls}.disabled:active,
-      .#{$btn-prefix-cls}[disabled]:active,
-      .#{$btn-prefix-cls}-disabled.active,
-      .#{$btn-prefix-cls}.disabled.active,
-      .#{$btn-prefix-cls}[disabled].active {
-         color: rgba(0, 0, 0, 0.25);
-         background-color: #f5f5f5;
-         border-color: #d9d9d9;
-         text-shadow: none;
-         -webkit-box-shadow: none;
-         box-shadow: none;
+      .#{$btn-prefix-cls} {
+         @include disableShow;
       }
-      .#{$btn-prefix-cls}.disabled,
-      .#{$btn-prefix-cls}[disabled] {
-         cursor: not-allowed;
-      }
+      
+      @include disabled;
 
       > .#{$btn-prefix-cls}:disabled,
       > span > .#{$btn-prefix-cls}:disabled {
          z-index: 0;
      }
+   }
+
+   &:before {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      left: -1px;
+      z-index: 1;
+      display: none;
+      background: #fff;
+      border-radius: inherit;
+      opacity: 0.35;
+      -webkit-transition: opacity 0.2s;
+      transition: opacity 0.2s;
+      content: '';
+      pointer-events: none;
+   }
+
+   &.#{$btn-prefix-cls}-loading{
+
+         &:not([disabled]) {
+            pointer-events: none;
+         }
+         &:before {
+            display: block; 
+         }
+   }
+
+   &-background-ghost{
+      color: #fff;
+      background: transparent !important;
+      border-color: #fff;
+
+      &.#{$btn-prefix-cls}{
+         &-primary {
+            color: #1890ff;
+            background-color: transparent;
+            border-color: #1890ff;
+            text-shadow: none;
+
+            @include hover_focus(transparent);
+         }
+         &-danger {
+            color: #ff4d4f;
+            background-color: transparent;
+            border-color: #ff4d4f;
+            text-shadow: none;
+
+            &:hover, 
+            &:focus {
+               color: #ff7875;
+               background-color: transparent;
+               border-color: #ff7875;
+           }
+         }
+         &-link {
+            color: #1890ff;
+            background-color: transparent;
+            border-color: transparent;
+            text-shadow: none;
+            color: #fff;
+
+            &:hover, 
+            &:focus {
+               color: #40a9ff;
+               background-color: transparent;
+               border-color: transparent;
+           }
+         }
+      }
+   }
+
+   &-block {
+      width: 100%;
    }
 }

@@ -4,6 +4,18 @@ import { Button as ComButton, Icon } from '../../components/index'
 
 const Button = () => {
    const [ size, setSize ] = React.useState(('large' as "large" | "small" | "default" | "middle" | undefined));
+   const [ loadingConfig, setLoadingConfig ] = React.useState({
+      loading: false,
+      iconLoading: false,
+   })
+
+   const changeLoading = (type: string) => {
+      let config = JSON.parse(JSON.stringify(loadingConfig));
+      config[type] = !(loadingConfig as Record<string, boolean>)[type];
+      console.log(config);
+      setLoadingConfig(config); 
+   }
+   
    return (
       <div>
          <div className="pb15">
@@ -104,7 +116,99 @@ const Button = () => {
                <ComButton type="primary" size="small" icon="cloud-download" />
             </ComButton.Group>
          </div>
-      </div>
+         <div className="pb15">
+            <p>不可用状态</p>
+            <ComButton type="primary" className="mr15">Primary</ComButton>
+            <ComButton type="primary" disabled>
+               Primary(disabled)
+            </ComButton>
+            <br />
+            <br />
+            <ComButton className="mr15">Default</ComButton>
+            <ComButton disabled>Default(disabled)</ComButton>
+            <br />
+            <br />
+            <ComButton type="dashed" className="mr15">Dashed</ComButton>
+            <ComButton type="dashed" disabled>
+               Dashed(disabled)
+            </ComButton>
+            <br />
+            <br />
+            <ComButton type="link" className="mr15">Link</ComButton>
+            <ComButton type="link" disabled>
+               Link(disabled)
+            </ComButton>
+            <br />
+            <br />
+            <div style={{ padding: '8px', background: 'rgb(190, 200, 200)' }}>
+               <ComButton ghost className="mr15">Ghost</ComButton>
+               <ComButton ghost disabled>
+               Ghost(disabled)
+               </ComButton>
+            </div>
+         </div>
+
+         <div className="pb15">
+            <p>加载中状态</p>
+            <ComButton className="mr15" type="primary" loading>
+               Loading
+            </ComButton>
+            <ComButton type="primary" size="small" loading>
+               Loading
+            </ComButton>
+            <br />
+            <br />
+            <ComButton className="mr15" type="primary" loading={loadingConfig.loading} onClick={() => changeLoading('loading')}>
+               Click me!
+            </ComButton>
+            <ComButton
+               type="primary"
+               icon="poweroff"
+               loading={loadingConfig.iconLoading}
+               onClick={() => changeLoading('iconLoading')}
+            >
+               Click me!
+            </ComButton>
+            <br />
+            <br />
+            <ComButton className="mr15" type="primary" loading />
+            <ComButton className="mr15" type="primary" shape="circle" loading />
+            <ComButton type="danger" shape="round" loading />
+            </div>
+            <div style={{ background: 'rgb(190, 200, 200)', padding: '15px' }}>
+               <p>幽灵按钮</p>
+               <ComButton className="mr15" type="primary" ghost>
+                  Primary
+               </ComButton>
+               <ComButton className="mr15" ghost>Default</ComButton>
+               <ComButton className="mr15" type="dashed" ghost>
+                  Dashed
+               </ComButton>
+               <ComButton className="mr15" type="danger" ghost>
+                  danger
+               </ComButton>
+               <ComButton type="link" ghost>
+                  link
+               </ComButton>
+            </div>
+
+            <div>
+               <p>block 按钮</p>
+               <ComButton className="mb10" type="primary" block>
+                  Primary
+               </ComButton>
+               <ComButton className="mb10" block>Default</ComButton>
+               <ComButton className="mb10" type="dashed" block>
+                  Dashed
+               </ComButton>
+               <ComButton className="mb10" type="danger" block>
+                  Danger
+               </ComButton>
+               <ComButton className="mb10" type="link" block>
+                  Link
+               </ComButton>
+            </div>
+         </div> 
    )
 }
 export default Button

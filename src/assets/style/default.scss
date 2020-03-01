@@ -2,3 +2,14 @@
 @import url('//at.alicdn.com/t/font_1657140_o9sjjnuzju.css');
 
 $prefix: poiUI;
+
+@mixin anticon-spin($speed: 1s) {
+   display: inline-block;
+   animation: loadingCircle $speed infinite linear;
+}
+
+@keyframes loadingCircle {
+   100% {
+     transform: rotate(360deg);
+   }
+}
