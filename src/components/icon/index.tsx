@@ -2,12 +2,15 @@ import React from "react";
 import { getPrefixCls, classNames } from "../../assets/js/com";
 import './index.scss'
 
-export interface IconProps {
+export interface BaseIconProps {
    type: string,
 	className?: string;
-   spin?: false,
-	prefixCls?: string;
+   spin?: boolean,
+   rotate?: number;
+   prefixCls?: string;
 }
+
+export type IconProps = Partial<BaseIconProps & React.HTMLAttributes<any>>;
 
 class Icon extends React.Component<IconProps> {
    
@@ -17,7 +20,7 @@ class Icon extends React.Component<IconProps> {
     }
 
    render () {
-      const { type, className, spin, prefixCls: customizePrefixCls } = this.props;
+      const { type, className, spin, rotate = 0, style, prefixCls: customizePrefixCls } = this.props;
       const prefixCls = getPrefixCls('icon', customizePrefixCls);
       const classes = classNames(prefixCls, className, 'iconfont', ({
          [`poi-${type}`]: type,
@@ -25,7 +28,7 @@ class Icon extends React.Component<IconProps> {
       } as Record<string, any>));
 
       return (
-         <i className={ classes } />
+         <i className={ classes } style={{ transform: `rotate(${rotate}deg)`, ...style }} />
       )
    }
 }
